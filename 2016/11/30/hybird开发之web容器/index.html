@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Lingyi&#39;s  Blog</title>
+  <title>hybird开发之web容器 | Lingyi&#39;s  Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lingyi's  Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="#浅谈Web容器－－－Cordova原理分析
+1 Cordova存在的原因1.1 由于H5的跨平台，开发成本低，门槛低，维护容易等优势webapp开发成为越来越多小公司公司的选择，像一些场景例如：APP中出现大段文字（如新闻、攻略等），且格式比较丰富（如加粗，字体多样），那么用H5会比较方便。用户常见页面频换，如（淘宝首页各种不同活动），那么用H5，维护起来更容易，但h5也有他的缺点，例如：H5不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hybird开发之web容器">
+<meta property="og:url" content="http://yoursite.com/2016/11/30/hybird开发之web容器/index.html">
 <meta property="og:site_name" content="Lingyi's  Blog">
+<meta property="og:description" content="#浅谈Web容器－－－Cordova原理分析
+1 Cordova存在的原因1.1 由于H5的跨平台，开发成本低，门槛低，维护容易等优势webapp开发成为越来越多小公司公司的选择，像一些场景例如：APP中出现大段文字（如新闻、攻略等），且格式比较丰富（如加粗，字体多样），那么用H5会比较方便。用户常见页面频换，如（淘宝首页各种不同活动），那么用H5，维护起来更容易，但h5也有他的缺点，例如：H5不">
+<meta property="og:updated_time" content="2016-11-30T08:32:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lingyi's  Blog">
+<meta name="twitter:title" content="hybird开发之web容器">
+<meta name="twitter:description" content="#浅谈Web容器－－－Cordova原理分析
+1 Cordova存在的原因1.1 由于H5的跨平台，开发成本低，门槛低，维护容易等优势webapp开发成为越来越多小公司公司的选择，像一些场景例如：APP中出现大段文字（如新闻、攻略等），且格式比较丰富（如加粗，字体多样），那么用H5会比较方便。用户常见页面频换，如（淘宝首页各种不同活动），那么用H5，维护起来更容易，但h5也有他的缺点，例如：H5不">
   
     <link rel="alternative" href="/atom.xml" title="Lingyi&#39;s  Blog" type="application/atom+xml">
   
@@ -141,73 +148,14 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-说说gradle的那些事" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-hybird开发之web容器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/30/说说gradle的那些事/">说说gradle的那些事</a>
-    </h1>
-  
-
-        <a href="/2016/11/30/说说gradle的那些事/" class="archive-article-date">
-  	<time datetime="2016-11-30T06:09:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-30</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#浅谈Web容器－－－Cordova原理分析</p>
-<h2 id="1-Cordova存在的原因"><a href="#1-Cordova存在的原因" class="headerlink" title="1 Cordova存在的原因"></a>1 Cordova存在的原因</h2><pre><code>1.1 由于H5的跨平台，开发成本低，门槛低，维护容易等优势webapp开发成为越来越多小公司公司的选择，像一些场景例如：APP中出现大段文字（如新闻、攻略等），且格式比较丰富（如加粗，字体多样），那么用H5会比较方便。用户常见页面频换，如（淘宝首页各种不同活动），那么用H5，维护起来更容易，但h5也有他的缺点，例如：H5不足的地方表现在软件运行速度容易受网络影响，对于摄像头、陀螺仪等硬件支持较差，开发出来的应用性能较差，不适合处理较复杂的逻辑等等，所以混合开发成了更多的选择。
-     混合开发的App（Hybrid App）就是在一个App中内嵌一个轻量级的浏览器，一部分原生的功能改为Html 5来开发，这部分功能不仅能够在不升级App的情况下动态更新，而且可以在Android或iOS的App上同时运行，让用户的体验更好又可以节省开发的资源，而我认为一个混合开发的app必须要要有的功能就是Html 5页面和Native App怎么进行交互。比如，我点了一个Html 5页面上的一个按钮或链接，我能不能够跳转到Native App的某个页面；比如我点了Html 5页面上的分享按钮，我能不能调用Native App的分享功能；比如Html加载的时候能不能获取Native App的用户信息等等。
-</code></pre><p>  <img src="https://thumbnail0.baidupcs.com/thumbnail/0b9509fc8ab3a033cee67c102683d353?fid=593809924-250528-307486784451508&amp;time=1480496400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-LW53576pwVqF6j9Y3n639QhHPiU%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=7763350904820061264&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/30/说说gradle的那些事/#more">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hybird开发之web容器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/30/hybird开发之web容器/">hybird开发之web容器</a>
+    <h1 class="article-title" itemprop="name">
+      hybird开发之web容器
     </h1>
   
 
@@ -237,26 +185,82 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/30/hybird开发之web容器/#more">展开全文 >></a>
-        </p>
-      
 
+      
+        <div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode"></div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
-
-
-
+  
+<nav id="article-nav">
+  
+    <a href="/2016/11/30/说说gradle的那些事/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          说说gradle的那些事
+        
+      </div>
+    </a>
   
   
+</nav>
+
+
+
+
+
+
+
 
 
       </div>
@@ -277,8 +281,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
