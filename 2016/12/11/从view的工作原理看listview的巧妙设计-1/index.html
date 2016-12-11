@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Lingyi&#39;s  Blog</title>
+  <title>从view的工作原理看listview的巧妙设计 | Lingyi&#39;s  Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lingyi's  Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
+   早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错误">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从view的工作原理看listview的巧妙设计">
+<meta property="og:url" content="http://yoursite.com/2016/12/11/从view的工作原理看listview的巧妙设计-1/index.html">
 <meta property="og:site_name" content="Lingyi's  Blog">
+<meta property="og:description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
+   早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错误">
+<meta property="og:image" content="http://my.csdn.net/uploads/201208/10/1344607996_5187.png">
+<meta property="og:updated_time" content="2016-12-11T11:38:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lingyi's  Blog">
+<meta name="twitter:title" content="从view的工作原理看listview的巧妙设计">
+<meta name="twitter:description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
+   早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错误">
+<meta name="twitter:image" content="http://my.csdn.net/uploads/201208/10/1344607996_5187.png">
   
     <link rel="alternative" href="/atom.xml" title="Lingyi&#39;s  Blog" type="application/atom+xml">
   
@@ -141,16 +150,14 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-从view的工作原理看listview的巧妙设计-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-从view的工作原理看listview的巧妙设计-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/从view的工作原理看listview的巧妙设计-1/">从view的工作原理看listview的巧妙设计</a>
+    <h1 class="article-title" itemprop="name">
+      从view的工作原理看listview的巧妙设计
     </h1>
   
 
@@ -226,126 +233,98 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/11/从view的工作原理看listview的巧妙设计-1/#more">展开全文 >></a>
-        </p>
-      
 
+      
+        <div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode"></div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/11/水波纹activity切换动画/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">水波纹activity切换动画</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="从view的工作原理看listview的巧妙设计-1" data-title="从view的工作原理看listview的巧妙设计" data-url="http://yoursite.com/2016/12/11/从view的工作原理看listview的巧妙设计-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"atling"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
  
-
-  
-    <article id="post-水波纹activity切换动画" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/水波纹activity切换动画/">水波纹activity切换动画</a>
-    </h1>
-  
-
-        <a href="/2016/12/11/水波纹activity切换动画/" class="archive-article-date">
-  	<time datetime="2016-12-11T10:37:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/11/水波纹activity切换动画/#more">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
- 
-
-  
-    <article id="post-说说Gradle的那些事儿（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/04/说说Gradle的那些事儿（一）/">说说Gradle的那些事儿</a>
-    </h1>
-  
-
-        <a href="/2016/12/04/说说Gradle的那些事儿（一）/" class="archive-article-date">
-  	<time datetime="2016-12-03T16:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-04</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="android-Gradle系列分析之Groovy和Gradle基础学习了解"><a href="#android-Gradle系列分析之Groovy和Gradle基础学习了解" class="headerlink" title="android Gradle系列分析之Groovy和Gradle基础学习了解"></a>android Gradle系列分析之Groovy和Gradle基础学习了解</h1>
-        <a class="article-more-a"  href="/2016/12/04/说说Gradle的那些事儿（一）/#more">more >></a>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/04/说说Gradle的那些事儿（一）/#more">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
- 
-
-  
-  
-
 
       </div>
       <footer id="footer">
