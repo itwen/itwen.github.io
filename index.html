@@ -146,6 +146,19 @@
     <article id="post-小程序开发过程中踩坑记--(环境配置篇)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/30/小程序开发过程中踩坑记--(环境配置篇)/">小程序开发过程中踩坑记--（环境配置篇）</a>
+    </h1>
+  
+
+        <a href="/2017/07/30/小程序开发过程中踩坑记--(环境配置篇)/" class="archive-article-date">
+  	<time datetime="2017-07-30T11:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-30</time>
+</a>
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="小程序开发过程中踩坑记–（环境配置篇）"><a href="#小程序开发过程中踩坑记–（环境配置篇）" class="headerlink" title="小程序开发过程中踩坑记–（环境配置篇）"></a>小程序开发过程中踩坑记–（环境配置篇）</h1><h2 id="1、前期准备工作"><a href="#1、前期准备工作" class="headerlink" title="1、前期准备工作"></a>1、前期准备工作</h2><p>开发小程序需要准备一下东西</p>
@@ -153,244 +166,7 @@
 <p>1.2）域名 </p>
 <p>1.3）ssl证书，小程序规定所有请求必须走HTTPS</p>
 <h2 id="1-1服务器准备"><a href="#1-1服务器准备" class="headerlink" title="1.1服务器准备"></a>1.1服务器准备</h2><h3 id="1-1-服务器基础信息"><a href="#1-1-服务器基础信息" class="headerlink" title="1.1 服务器基础信息"></a>1.1 服务器基础信息</h3><p>第一次比较正式的写前端和后端的东西 过程中碰到很多坑，这里我把一些东西总结出来，避免不熟悉的人踩同样的坑</p>
-<p>我这里使用的是亚马逊的云主机，从注册起可免费使用一年，每个月750个小时的实例运行时间，如果只创建一个实例 一个月750个小时完全是够用的，<a href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/concepts.html" target="_blank" rel="external">使劲戳这里去创建一个</a> 下面我的云主机的一些配置</p>
-<p>CPU信息 </p>
-<p><img src="http://os8n9su9s.bkt.clouddn.com/Frz9s8bQNGm9HBlHnrxTej9tQrFC" alt=""></p>
-<p>看起来好像还不错的样子  淘宝搜了下 e5-2676 v3 也要两三千</p>
-<p>内存信息</p>
-<p><img src="http://os8n9su9s.bkt.clouddn.com/FsjJ3-b6h1LlOC2iO_o8dzZmqH1f" alt=""></p>
-<p>这个有点寒掺了 只有一个g  不过个人练手项目够用了</p>
-<p>硬盘大小</p>
-<p><img src="http://os8n9su9s.bkt.clouddn.com/Fiqd_1mHjoL0U74TmeILfIQrwDG7" alt=""></p>
-<p>只有十个g大小  可用的不到8g 所以我的小程序需要上传的一些文件图片的什么的 我都转存到七牛上面 <a href="https://portal.qiniu.com" target="_blank" rel="external">戳我去注册一个</a> 但是免费的容量和流量都有限</p>
-<h3 id="1-2服务器的环境搭建"><a href="#1-2服务器的环境搭建" class="headerlink" title="1.2服务器的环境搭建"></a>1.2服务器的环境搭建</h3><p>通过ssh连接到云主机 <img src="http://os8n9su9s.bkt.clouddn.com/Fi3Q3d4bX-ggHGpLiNsLLAe7cWcK" alt=""></p>
-<p>这里我服务端使用的开发语言是Java 数据使用的是MySQL ，开发框架最常见的springMVC+mybatis </p>
-<p>mysql 安装，这里亚马逊的云主机是自带了jdk的 如果没有需要自己去安装,</p>
-<pre><code>sudo yum install mysql mysql-server mysql-devel -y
-
-最后提示 Complete!  表示安装成功
-</code></pre><p>查看是否生成了mysqld服务, 并设置随机启动</p>
-<pre><code>chkconfig --list |grep mysql 
-</code></pre><p>设置MySQL开机启动</p>
-<pre><code>sudo chkconfig mysqld on 
-</code></pre><p>启动MySQL服务</p>
-<pre><code>sudo service mysqld start
-显示OK代表启动成功 
-</code></pre><p>链接数据库,默认是没有密码</p>
-<pre><code>mysql -u root  -p
-</code></pre><p>可以设置密码，需要退出数据库连接</p>
-<pre><code>mysqladmin -u root password XXXXX
-</code></pre><p>设置数据库是否可以远程链接</p>
-<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;123456&apos; WITH GRANT OPTION;
-第一个星号代表可以允许那个数据库对外链接
-第二个星号代表可以允许这个数据库里面的哪张表可以
- root 表示以root 用户登录
- % 表示可以允许来自任一IP的主机链接
- 123456 表示密码
-</code></pre><p>在日常开发中为了保证规范，一般都是有三套开发环境，日常开发环境，预发测试环境，线上正式环境，这样才可以保证日常开发不会影响线上的运行，不同的环境部署到不同的机器，但是这里我们乞丐版个人只有一个机器，这里我就教大家一个如何使用一个一台机器配置多套运行环境。</p>
-<p>首先我先链接好数据库后  创建两个数据库</p>
-<pre><code>create database release; //线上正式环境
-create database prerelease //预发测试环境 。线下环境 就是自己本地的机器
-</code></pre><p>创建好了两个数据库后，两个数据库建立一模一样的表。然后就是下载Tomcat 这里就不赘述了</p>
-<h3 id="1-3-如何使用Nginx-Tomcat-如何优雅的做单机多实例的部署"><a href="#1-3-如何使用Nginx-Tomcat-如何优雅的做单机多实例的部署" class="headerlink" title="1.3 如何使用Nginx+Tomcat 如何优雅的做单机多实例的部署"></a>1.3 如何使用Nginx+Tomcat 如何优雅的做单机多实例的部署</h3><p>首先我们先来看Tomcat部署的场景分析</p>
-<p>通常，我们对tomcat单机部署需求可以分为几种：</p>
-<p>单实例单应用 (一个tomcat 一个web应用)</p>
-<p>单实例多应用 (一个tomcat多个应用)</p>
-<p>多实例单应用 (多个tomcat都部署一个应用)</p>
-<p>多实例多应用 (多个tomcat部署多个不同的应用)</p>
-<p>第一种场景：这是我们开发中经常用到的，如果不要求周期性地维护tomcat版本，一般的做法是把打好的war包丢到webapps目录下，然后执行startup.sh脚本，并且可以在浏览器里访问就行了。</p>
-<p>第二种场景：是把多个应用程序的war包放在同一个tomcat的webapps目录，这样一来，关闭和启动tomca，或tomcat挂掉会影响所有项目。</p>
-<p>第三种场景: 各个tomcat都运行同一个应用程序，对应地需要修改不同的监听端口，这种方式通常会和apache httpd或者nginx整合使用，做一些负载均衡的处理。</p>
-<p>第四种场景: 相当于第一种场景的复数形式，除了修改不同的监听端口，没有本质区别。</p>
-<p>一般来说，多实例部署tomcat，可以充分利用系统资源，不过这种方式，也有几个方面需要考虑：</p>
-<p>多实例tomcat的更新维护，例如对tomcat进行升级等操作，我们需要考虑如何能“优雅”地对所有实例进行升级</p>
-<p>尽量不要影响应用程序，在更新tomcat时，一不小心就把conf目录等全部覆盖，所以尽量要把配置文件和安装目录隔离</p>
-<p>对于单应用来说，如果将war包分别置于各个tomcat的webapps目录，那么在发布新版本的war时，可能会出现某个实例更新失败，导致用户在访问时可能会访问到不同版本的web app，因此，比较好的方式就是所有tomcat实例都统一指向同一个应用程序，这样做，就可以多个tomcat用一份应用源码，简单部署，单机高可用也能实现（要配合nginx）.</p>
-<p>本文重点阐述多实例应用的部署方案，但是为了解决上述几个问题，我们需要先来了解一下tomcat的一些基本情况。</p>
-<p>我们的目标是要做到这样<br><img src="http://os8n9su9s.bkt.clouddn.com/FjvvN3e7QAV11reA9d__Nj22s9eY" alt=""></p>
-<p>首先来看一下tomcat的目录结构，一个刚解压出来的tomcat打包文件应该有以下几个目录</p>
-<table>
-<thead>
-<tr>
-<th>目录</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bin</td>
-<td style="text-align:center">主要存放脚本文件，例如比较常用的windows和linux系统中启动和关闭脚本</td>
-</tr>
-<tr>
-<td>conf</td>
-<td style="text-align:center">主要存放配置文件，其中最重要的两个配置文件是server.xml和web.xml</td>
-</tr>
-<tr>
-<td>lib</td>
-<td style="text-align:center">主要存放tomcat运行所依赖的包</td>
-</tr>
-<tr>
-<td>logs</td>
-<td style="text-align:center">主要存放运行时产生的日志文件，例如catalina.{date}.log等</td>
-</tr>
-<tr>
-<td>temp</td>
-<td style="text-align:center">存放tomcat运行时产生的临时文件，例如开启了hibernate缓存的应用程序，会在该目录下生成一些文件</td>
-</tr>
-<tr>
-<td>webapps</td>
-<td style="text-align:center">部署web应用程序的默认目录</td>
-</tr>
-<tr>
-<td>work</td>
-<td style="text-align:center">主要存放由JSP文件生成的servlet（java文件以及最终编译生成的class文件）</td>
-</tr>
-</tbody>
-</table>
-<p>再介绍两个tomcat中比较重要的概念（通常也是两个系统变量）—— <code>CATALINA_HOME和</code><br><code>CATALINA_BASE</code>：</p>
-<p><code>CATALINA_HOME</code>：即指向Tomcat安装路径的系统变量</p>
-<p><code>CATALINA_BASE</code>：即指向活跃配置路径的系统变量通过设置这两个变量，就可以将tomcat的安装目录和工作目录分离，从而实现tomcat多实例的部署。</p>
-<p>Tomcat官方文档指出，<code>CATALINA_HOME</code>路径的路径下只需要包含bin和lib目录，这也就是支持tomcat软件运行的目录，而<code>CATALINA_BASE</code>设置的路径可以包括上述所有目录，不过其中bin和lib目录并不是必需的，缺省时会使用<code>CATALINA_HOME</code>中的bin和conf。如此，我们就可以使用一个tomcat安装目录部署多个tomcat实例，这样的好处在于方便升级，就可以在不影响tomcat实例的前提下，替换掉<code>CATALINA_HOME</code>指定的tomcat安装目录。</p>
-<p><img src="http://www.itnose.net/img/20161025/172337.png" alt=""></p>
-<h4 id="1-3-1-修改server-xml"><a href="#1-3-1-修改server-xml" class="headerlink" title="1.3.1 修改server.xml"></a>1.3.1 修改server.xml</h4><p>这里不详细分析server.xml中每一个配置项，网上也有很多这方面的文档。下面主要说明监听端口和Host的配置内容。在server.xml中配置了四个监听端口，分别是：</p>
-<p>Server Port：该端口用于监听关闭tomcat的shutdown命令，默认为8005 Connector </p>
-<p>Port：该端口用于监听HTTP的请求，默认为8080</p>
-<p>AJP Port：该端口用于监听AJP（ Apache JServ Protocol ）协议上的请求，通常用于整合Apache Server等其他HTTP服务器，默认为8009</p>
-<p>Redirect Port：重定向端口，出现在Connector配置中，如果该Connector仅支持非SSL的普通http请求，那么该端口会把https的请求转发到这个Redirect Port指定的端口，默认为8443</p>
-<p>可见，如果不是使用AJP协议连接tomcat，只需要保证多实例中的Server Port和Connect Port不同即可。</p>
-<h3 id="1-3-2-下面来看我我是怎么配置的"><a href="#1-3-2-下面来看我我是怎么配置的" class="headerlink" title="1.3.2 下面来看我我是怎么配置的"></a>1.3.2 下面来看我我是怎么配置的</h3><p><img src="http://os8n9su9s.bkt.clouddn.com/FnG_PjLIpWDDX5sEqHjabBRBDrnR" alt=""></p>
-<p>这里我在Tomcat下创建了两个目录<code>prerelease</code> 和 <code>release</code>  最外层只留下<code>lib</code> 和<code>bin</code>这也就是支持tomcat软件运行的目录, 其他的几个目录全部移到新建的那几个文件夹下面，</p>
-<p>接下来编辑<code>server.xml</code></p>
-<p>前面说了只要保证 Server Port和Connect Port不同即可。</p>
-<pre><code>&lt;Server port=&quot;8004&quot; shutdown=&quot;SHUTDOWN&quot;&gt; //改成一个唯一的端口
-
-
-&lt;Connector port=&quot;8081&quot; protocol=&quot;HTTP/1.1&quot;
-           connectionTimeout=&quot;20000&quot;
-           redirectPort=&quot;8444&quot; /&gt; //改成一个唯一的端口
-</code></pre><p>接着修改<code>host</code>节点 </p>
-<pre><code>&lt;Host name=&quot;localhost&quot;  appBase=&quot;/home/ec2-user/apache-tomcat-8.5.16/prerelease/webapps&quot;
-        unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
-</code></pre><p>appbase 改成你现在这个实例webapps 所在的目录</p>
-<p>最后因为小程序需要走HTTPS  所以需要配置ssl</p>
-<pre><code>&lt;Connector port=&quot;8444&quot; protocol=&quot;HTTP/1.1&quot; SSLEnabled=&quot;true&quot;
-        maxThreads=&quot;150&quot; scheme=&quot;https&quot; secure=&quot;true&quot;
-        keystoreFile=&quot;/home/ec2-user/prerelease/Tomcat/preapi.atling.cn.jks&quot; //证书所在的位置
-      URIEncoding=&quot;UTF-8&quot;
-    keystorePass=&quot;xxxx&quot; //证书申请的时候的密码
-        clientAuth=&quot;false&quot; sslProtocol=&quot;TLS&quot;
-    ciphers=&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
-            TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
-            TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
-            TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
-            TLS_ECDHE_RSA_WITH_RC4_128_SHA,
-            TLS_RSA_WITH_AES_128_CBC_SHA256,
-            TLS_RSA_WITH_AES_128_CBC_SHA,
-            TLS_RSA_WITH_AES_256_CBC_SHA256,
-            TLS_RSA_WITH_AES_256_CBC_SHA,
-            SSL_RSA_WITH_RC4_128_SHA&quot;
-    /&gt;
-</code></pre><p>然后再配置<code>web.xml</code> </p>
-<pre><code>&lt;web-resource-collection &gt;
-&lt;web-resource-name &gt;SSL&lt;/web-resource-name&gt;
-&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-&lt;/web-resource-collection&gt;
-    &lt;user-data-constraint&gt;
-      &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;
-&lt;/user-data-constraint&gt;
-</code></pre><p>接着在每个实例的根目录，像我就是在prerelease目录下创建一个启动Tomcat的脚本</p>
-<pre><code># description: 启动tomcat多实例.#
-. /etc/init.d/functions
-RETVAL=$?
-# tomcat实例目录
-export CATALINA_BASE=&quot;$PWD&quot;
-# tomcat安装目录
-export CATALINA_HOME=&quot;/usr/local/src/apache-tomcat-8.5.16&quot;
-case &quot;$1&quot; in
-start)
-if [ -f $CATALINA_HOME/bin/startup.sh ];then
-echo $&quot;start Tomcat&quot;
-$CATALINA_HOME/bin/startup.sh
-fi
-;;
-stop)
-if [ -f $CATALINA_HOME/bin/shutdown.sh ];then
-echo $&quot;stop Tomcat&quot;
-$CATALINA_HOME/bin/shutdown.sh
-fi
-;;
-restart)
-if [ -f $CATALINA_HOME/bin/shutdown.sh ] &amp;&amp; [ -f $CATALINA_HOME/bin/    startup.sh ];then
-echo $&quot;restart Tomcat&quot;
-$CATALINA_HOME/bin/shutdown.sh &amp;&amp; $CATALINA_HOME/bin/startup.sh
-fi
-;;
-*)
-echo $&quot;Usage: $0 {start|stop|restart}&quot;
-exit 1
-;;
-esac
-exit $RETVAL
-</code></pre><p>启动和停止 只需要当前实例在根目录下执行</p>
-<pre><code>sudo ./startup.sh start  或者 sudo ./startup.sh stop
-</code></pre><p>startup.sh  是脚本文件的名称 Tomcat配置好了 接下来就是下载和配置Nginx</p>
-<h2 id="1-4-nginx-安装"><a href="#1-4-nginx-安装" class="headerlink" title="1.4 nginx 安装"></a>1.4 nginx 安装</h2><p>安装的话基本上看这篇文章就好了<br><a href="http://www.nginx.cn/install" target="_blank" rel="external">nginx安装</a></p>
-<p>它里面有些问题需要注意下<img src="http://os8n9su9s.bkt.clouddn.com/FmWjUMqdrlKnZkggYrIKysrjU7VK" alt=""></p>
-<p>他这个pcre 和zlib库的版本有问题 ，你可以去他这个链接的前面的地址例如</p>
-<pre><code>ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre
-</code></pre><p>上面去找到最新的版本的链接就好了</p>
-<p>还有就是最后一步Nginx 配置的时候只需要</p>
-<pre><code>./configure --with-http_ssl_module --with-openssl=/opt/app/openet/oetal1/chenhe/openssl-1.0.1t
-</code></pre><p>就好了，把ssl模块编译进去</p>
-<p>最后就是Nginx的配置，我们前面启动了两个Tomcat实例分别是不同的端口，这里我们就用Nginx 通过不同的域名访问分别转发到不同的Tomcat上就好了 ，下面看我的Nginx的配置</p>
-<pre><code>server {
-    listen       443 ; #监听443端口 HTTPS 默认的是443端口
-    ssl             on;
-    server_name  api.atling.cn; #请求的域名 
-
-    ssl_certificate      /home/ec2-user/release/Nginx/1_api.atling.cn_bundle.crt; #ssl证书的路径
-    ssl_certificate_key  /home/ec2-user/release/Nginx/2_api.atling.cn.key;
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_session_timeout  5m;
-
-    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-    ssl_prefer_server_ciphers  on;
-
-   location /  { # location / 表示拦截这个域名下的所有请求
-        proxy_pass   https://127.0.0.1:8443; #转发到我们刚启动的Tomcat启动的对应的端口上去
-
-
-    }
-}
-
-    server {
-    listen       443 ;
-    ssl             on;
-    server_name  preapi.atling.cn;
-
-    ssl_certificate      /home/ec2-user/prerelease/Nginx/1_preapi.atling.cn_bundle.crt;
-    ssl_certificate_key  /home/ec2-user/prerelease/Nginx/2_preapi.atling.cn.key;
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_session_timeout  5m;
-
-    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-    ssl_prefer_server_ciphers  on;
-
-   location /  { 
-        proxy_pass   https://127.0.0.1:8444;  
-    }
-
-}
-</code></pre><p>这样重启Nginx 访问不同的域名就会转发到不同的Tomcat服务器 这样就实现了一台机器部署多套开发环境</p>
-<p>域名我是在阿里云上面注册的域名，域名解析用的也是阿里云提供的云解析服务 ssl证书是申请的腾讯的</p>
-<p><a href="https://netcn.console.aliyun.com" target="_blank" rel="external">戳这里去申请域名</a>  <a href="https://www.qcloud.com/product/ssl" target="_blank" rel="external">戳这里去申请ssl证书</a></p>
-<p>这是我的解析记录</p>
-<p><img src="http://os8n9su9s.bkt.clouddn.com/FsYMw7Nz0z14fM8bOszpZQHo-6He" alt=""></p>
-<p>这是我配置的预发环境<a href="https://preapi.atling.cn" target="_blank" rel="external">https://preapi.atling.cn</a>  这是我配置的线上正式环境<a href="https://api.atling.cn" target="_blank" rel="external">https://api.atling.cn</a></p>
-<p>到这里为止服务端的环境就算配置好了</p>
-
+        <a class="article-more-a"  href="/2017/07/30/小程序开发过程中踩坑记--(环境配置篇)/#more">more >></a>
       
 
       
