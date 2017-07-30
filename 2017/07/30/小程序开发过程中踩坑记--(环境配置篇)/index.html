@@ -8,12 +8,41 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Lingyi&#39;s  Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="小程序开发过程中踩坑记–（环境配置篇）1、前期准备工作开发小程序需要准备一下东西
+1.1）服务器（不需要网络请求的可以不用）
+1.2）域名 
+1.3）ssl证书，小程序规定所有请求必须走HTTPS
+1.1服务器准备1.1 服务器基础信息第一次比较正式的写前端和后端的东西 过程中碰到很多坑，这里我把一些东西总结出来，避免不熟悉的人踩同样的坑
+我这里使用的是亚马逊的云主机，从注册起可免费使用一年，每个">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Lingyi's  Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/30/小程序开发过程中踩坑记--(环境配置篇)/index.html">
 <meta property="og:site_name" content="Lingyi's  Blog">
+<meta property="og:description" content="小程序开发过程中踩坑记–（环境配置篇）1、前期准备工作开发小程序需要准备一下东西
+1.1）服务器（不需要网络请求的可以不用）
+1.2）域名 
+1.3）ssl证书，小程序规定所有请求必须走HTTPS
+1.1服务器准备1.1 服务器基础信息第一次比较正式的写前端和后端的东西 过程中碰到很多坑，这里我把一些东西总结出来，避免不熟悉的人踩同样的坑
+我这里使用的是亚马逊的云主机，从注册起可免费使用一年，每个">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/Frz9s8bQNGm9HBlHnrxTej9tQrFC">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/FsjJ3-b6h1LlOC2iO_o8dzZmqH1f">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/Fiqd_1mHjoL0U74TmeILfIQrwDG7">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/Fi3Q3d4bX-ggHGpLiNsLLAe7cWcK">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/FjvvN3e7QAV11reA9d__Nj22s9eY">
+<meta property="og:image" content="http://www.itnose.net/img/20161025/172337.png">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/FnG_PjLIpWDDX5sEqHjabBRBDrnR">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/FmWjUMqdrlKnZkggYrIKysrjU7VK">
+<meta property="og:image" content="http://os8n9su9s.bkt.clouddn.com/FsYMw7Nz0z14fM8bOszpZQHo-6He">
+<meta property="og:updated_time" content="2017-07-30T14:30:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lingyi's  Blog">
+<meta name="twitter:description" content="小程序开发过程中踩坑记–（环境配置篇）1、前期准备工作开发小程序需要准备一下东西
+1.1）服务器（不需要网络请求的可以不用）
+1.2）域名 
+1.3）ssl证书，小程序规定所有请求必须走HTTPS
+1.1服务器准备1.1 服务器基础信息第一次比较正式的写前端和后端的东西 过程中碰到很多坑，这里我把一些东西总结出来，避免不熟悉的人踩同样的坑
+我这里使用的是亚马逊的云主机，从注册起可免费使用一年，每个">
+<meta name="twitter:image" content="http://os8n9su9s.bkt.clouddn.com/Frz9s8bQNGm9HBlHnrxTej9tQrFC">
   
     <link rel="alternative" href="/atom.xml" title="Lingyi&#39;s  Blog" type="application/atom+xml">
   
@@ -141,9 +170,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-小程序开发过程中踩坑记--(环境配置篇)" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-小程序开发过程中踩坑记--(环境配置篇)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -401,181 +428,98 @@ exit $RETVAL
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/30/小程序开发过程中踩坑记--(环境配置篇)/#more">展开全文 >></a>
-        </p>
-      
 
+      
+        <div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode"></div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/11/从view的工作原理看listview的巧妙设计-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从view的工作原理看listview的巧妙设计</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="小程序开发过程中踩坑记--(环境配置篇)" data-title="" data-url="http://yoursite.com/2017/07/30/小程序开发过程中踩坑记--(环境配置篇)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"atling"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
  
-
-  
-    <article id="post-从view的工作原理看listview的巧妙设计-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/从view的工作原理看listview的巧妙设计-1/">从view的工作原理看listview的巧妙设计</a>
-    </h1>
-  
-
-        <a href="/2016/12/11/从view的工作原理看listview的巧妙设计-1/" class="archive-article-date">
-  	<time datetime="2016-12-11T11:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="activity和window的创建过程"><a href="#activity和window的创建过程" class="headerlink" title="activity和window的创建过程"></a>activity和window的创建过程</h1>
-        <a class="article-more-a"  href="/2016/12/11/从view的工作原理看listview的巧妙设计-1/#more">more >></a>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/11/从view的工作原理看listview的巧妙设计-1/#more">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
- 
-
-  
-    <article id="post-水波纹activity切换动画" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/水波纹activity切换动画/">水波纹activity切换动画</a>
-    </h1>
-  
-
-        <a href="/2016/12/11/水波纹activity切换动画/" class="archive-article-date">
-  	<time datetime="2016-12-11T10:37:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<pre><code>其实android有提供 `activity`之间切换动画的API `overridePendingTransition(intres,outres)`只要传入两个动画布局文件，就可以实现淡入淡出，旋转，缩放，平移等动画，但是这些动画看起来太平常了，这时候我们就需要一点炫酷点的东西，
-</code></pre><p>大致效果如下图：</p>
-<p><img src="https://github.com/itwen/pick/blob/master/firstframe.png?raw=true" alt=""></p>
-<p>效果是当你在一个activity点击一个view 然后要切换到另一个activity，这时候就会以点击的这个view为中心把第二个activity的显示内容以一个水波纹圆的形势往四周散开。</p>
-<p>具体实现的思路主要是在第二个activity中获取到根试图DecorView,然后创建一个view，这个view是以第一个activity的视图为背景，然后把第二个activity的视图裁剪成一个圆随着时间半径逐渐变大，效果就好像是第二个activity以一个圆的形势在第一个activity上逐渐变大。</p>
-<p>具体代码可以请看<a href="https://github.com/itwen/WalterActivity" target="_blank" rel="external">github</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/11/水波纹activity切换动画/#more">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
- 
-
-  
-    <article id="post-说说Gradle的那些事儿（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/04/说说Gradle的那些事儿（一）/">说说Gradle的那些事儿</a>
-    </h1>
-  
-
-        <a href="/2016/12/04/说说Gradle的那些事儿（一）/" class="archive-article-date">
-  	<time datetime="2016-12-03T16:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-04</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="android-Gradle系列分析之Groovy和Gradle基础学习了解"><a href="#android-Gradle系列分析之Groovy和Gradle基础学习了解" class="headerlink" title="android Gradle系列分析之Groovy和Gradle基础学习了解"></a>android Gradle系列分析之Groovy和Gradle基础学习了解</h1>
-        <a class="article-more-a"  href="/2016/12/04/说说Gradle的那些事儿（一）/#more">more >></a>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/04/说说Gradle的那些事儿（一）/#more">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
- 
-
-  
-  
-
 
       </div>
       <footer id="footer">
