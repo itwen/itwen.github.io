@@ -84,17 +84,20 @@
 
 
 
-<meta name="description" content="activity和window的创建过程">
+<meta name="description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
+   早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从view的工作原理看listview的巧妙设计">
+<meta property="og:title" content="从view的工作原理看listview的巧妙设计(activity和window的创建过程)">
 <meta property="og:url" content="http://yoursite.com/2016/12/11/从view的工作原理看listview的巧妙设计-1/index.html">
 <meta property="og:site_name" content="Lingyi's  Blog">
-<meta property="og:description" content="activity和window的创建过程">
+<meta property="og:description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
+   早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错">
 <meta property="og:image" content="http://my.csdn.net/uploads/201208/10/1344607996_5187.png">
-<meta property="og:updated_time" content="2016-12-12T01:51:50.000Z">
+<meta property="og:updated_time" content="2017-07-31T04:26:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从view的工作原理看listview的巧妙设计">
-<meta name="twitter:description" content="activity和window的创建过程">
+<meta name="twitter:title" content="从view的工作原理看listview的巧妙设计(activity和window的创建过程)">
+<meta name="twitter:description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
+   早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错">
 <meta name="twitter:image" content="http://my.csdn.net/uploads/201208/10/1344607996_5187.png">
 
 
@@ -129,7 +132,7 @@
 
 
 
-  <title> 从view的工作原理看listview的巧妙设计 | Lingyi's  Blog </title>
+  <title> 从view的工作原理看listview的巧妙设计(activity和window的创建过程) | Lingyi's  Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -187,7 +190,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -197,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -264,7 +267,7 @@
             
             
               
-                从view的工作原理看listview的巧妙设计
+                从view的工作原理看listview的巧妙设计(activity和window的创建过程)
               
             
           </h1>
@@ -276,7 +279,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-11T19:34:17+08:00">
                 2016-12-11
               </time>
@@ -297,7 +300,7 @@
 
           
           
-             <span id="/2016/12/11/从view的工作原理看listview的巧妙设计-1/" class="leancloud_visitors" data-flag-title="从view的工作原理看listview的巧妙设计">
+             <span id="/2016/12/11/从view的工作原理看listview的巧妙设计-1/" class="leancloud_visitors" data-flag-title="从view的工作原理看listview的巧妙设计(activity和window的创建过程)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -322,8 +325,8 @@
       
 
       
-        <h1 id="activity和window的创建过程"><a href="#activity和window的创建过程" class="headerlink" title="activity和window的创建过程"></a>activity和window的创建过程</h1><a id="more"></a>
-<p>  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。</p>
+        <a id="more"></a>
+<h1 id="activity和window的创建过程"><a href="#activity和window的创建过程" class="headerlink" title="activity和window的创建过程"></a>activity和window的创建过程</h1><p>  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。</p>
 <p>   早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的<code>OutOfMemory</code>的错误，通常 是堆内存溢出。移动开发和web开发的最大的区别是设备资源受限，对一般手机应用，这个资源是相当有限的，堆内存的上限值只有16M，但是listview是怎么做到加载非常多的数据的时候而不会出现oom甚至非常流畅，连内存占用都没有增多呢？如果搞清楚了<code>listview</code>的实现原理，对日常开发中我们自定义复杂viewGroup也有着很大的参考价值，怀着这样的好奇心，我开始尝试着去分析listView的源码。</p>
 <p>   但是在去解决这个问题之前，我们还必须了解一个问题就是整个view的工作原理，我们大家都知道，view的工作流程主要是指 measure layout draw这三个过程，即measure确定view的大小，layout确定view的位置，而draw则是将view显示到屏幕上，但是如果细心的同学则会发现，一个view无论多么简单的view在整个工作流程中都至少会经历两次以上一般四次measure，二次layout过后在最后执行draw将view绘制到屏幕上。</p>
 <h2 id="view的工作原理浅析"><a href="#view的工作原理浅析" class="headerlink" title="view的工作原理浅析"></a>view的工作原理浅析</h2><p>   为了清楚的了解这些原因，我们需要先知道<code>Activity</code>是如何显示的，由于篇幅的原因本文主要从<code>ActivityThread</code>的<code>handleLaunchActivity()</code> 方法讲起，前面具体的用户调用了StartActivity之后怎么通知Ams（<code>ActivityManagerService</code>）暂停当前正在执行的activity,然后新启动的activity的一些重要的数据类ProcessRecord ActivityRecord, TaskRecord等的创建，启动类型，权限，运行环境等一系例的检查接下来会专门写一篇文章来介绍整个Activity的启动过程和ActivityManagerService的工作原理，这里我们先大概有着么个概念。</p>
@@ -469,10 +472,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -489,7 +492,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -499,7 +502,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -563,7 +566,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

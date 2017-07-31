@@ -84,12 +84,14 @@
 
 
 
-<meta name="description" content="android Gradle系列分析之Groovy和Gradle基础学习了解">
+<meta name="description" content="android Gradle系列分析之Groovy和Gradle基础学习了解1 Gradle是什么Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。面向Java应用为主。当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言。
+2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="说说Gradle的那些事儿">
 <meta property="og:url" content="http://yoursite.com/2016/12/04/说说Gradle的那些事儿（一）/index.html">
 <meta property="og:site_name" content="Lingyi's  Blog">
-<meta property="og:description" content="android Gradle系列分析之Groovy和Gradle基础学习了解">
+<meta property="og:description" content="android Gradle系列分析之Groovy和Gradle基础学习了解1 Gradle是什么Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。面向Java应用为主。当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言。
+2">
 <meta property="og:image" content="https://github.com/itwen/pick/blob/master/hybirdImg/groovy1.png?raw=true">
 <meta property="og:image" content="https://github.com/itwen/pick/blob/master/hybirdImg/groovy10.png?raw=true">
 <meta property="og:image" content="https://github.com/itwen/pick/blob/master/hybirdImg/groovy3.png?raw=true">
@@ -111,10 +113,11 @@
 <meta property="og:image" content="https://github.com/itwen/pick/blob/master/hybirdImg/gradle11.png?raw=true">
 <meta property="og:image" content="https://github.com/itwen/pick/blob/master/hybirdImg/gradle12.png?raw=true">
 <meta property="og:image" content="https://github.com/itwen/pick/blob/master/hybirdImg/gradle13.png?raw=true">
-<meta property="og:updated_time" content="2016-12-09T10:27:11.000Z">
+<meta property="og:updated_time" content="2017-07-31T04:27:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="说说Gradle的那些事儿">
-<meta name="twitter:description" content="android Gradle系列分析之Groovy和Gradle基础学习了解">
+<meta name="twitter:description" content="android Gradle系列分析之Groovy和Gradle基础学习了解1 Gradle是什么Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。面向Java应用为主。当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言。
+2">
 <meta name="twitter:image" content="https://github.com/itwen/pick/blob/master/hybirdImg/groovy1.png?raw=true">
 
 
@@ -207,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -217,7 +220,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -296,7 +299,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-04T00:59:18+08:00">
                 2016-12-04
               </time>
@@ -342,8 +345,8 @@
       
 
       
-        <h1 id="android-Gradle系列分析之Groovy和Gradle基础学习了解"><a href="#android-Gradle系列分析之Groovy和Gradle基础学习了解" class="headerlink" title="android Gradle系列分析之Groovy和Gradle基础学习了解"></a>android Gradle系列分析之Groovy和Gradle基础学习了解</h1><a id="more"></a>
-<h2 id="1-Gradle是什么"><a href="#1-Gradle是什么" class="headerlink" title="1 Gradle是什么"></a>1 Gradle是什么</h2><p>Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。<br>面向Java应用为主。当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言。</p>
+        <a id="more"></a>
+<h1 id="android-Gradle系列分析之Groovy和Gradle基础学习了解"><a href="#android-Gradle系列分析之Groovy和Gradle基础学习了解" class="headerlink" title="android Gradle系列分析之Groovy和Gradle基础学习了解"></a>android Gradle系列分析之Groovy和Gradle基础学习了解</h1><h2 id="1-Gradle是什么"><a href="#1-Gradle是什么" class="headerlink" title="1 Gradle是什么"></a>1 Gradle是什么</h2><p>Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。<br>面向Java应用为主。当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言。</p>
 <p>2013年5月16日，在I/O大会上，谷歌推出新的Android开发环境——Android Studio，并对开发者控制台进行了改进，增加了五个新的功能，并且使用Gradle作为工程的构建工具。</p>
 <h3 id="1-1-Groovy介绍"><a href="#1-1-Groovy介绍" class="headerlink" title="1.1 Groovy介绍"></a>1.1 Groovy介绍</h3><p>因为Gradle是基于Groovy语言的，所以在讲之前，我们先来稍微了解下Groovy。<br>Groovy是一种基于JVM（Java虚拟机）的敏捷开发语言，它结合了Python、Ruby和Smalltalk的许多强大的特性，Groovy 代码能够与 Java 代码很好地结合，也能用于扩展现有代码。由于其运行在 JVM 上的特性，Groovy 可以使用其他 Java 语言编写的库。</p>
 <h3 id="1-2-为什么选择Groovy"><a href="#1-2-为什么选择Groovy" class="headerlink" title="1.2 为什么选择Groovy"></a>1.2 为什么选择Groovy</h3><p>正如官方的说法主要聚焦于java工程的构建，而至于为什么不直接采用java语言，因为由于java的局限性，做为构建语言表达力不够，不够强大。像Python,Groovy或Ruby可以做得更好。而我们选择Groovy,主要是它提供了对Java开发人员迄今为止最大的透明度。其基础语法与Java相同以及它的类型系统,其包结构和其他方面。</p>
@@ -640,10 +643,10 @@ classpath &apos;com.lingyi.hello:buildSrc:1.0-SNAPSHOT&apos; //在依赖的scrip
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -660,7 +663,7 @@ classpath &apos;com.lingyi.hello:buildSrc:1.0-SNAPSHOT&apos; //在依赖的scrip
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -670,7 +673,7 @@ classpath &apos;com.lingyi.hello:buildSrc:1.0-SNAPSHOT&apos; //在依赖的scrip
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -734,7 +737,7 @@ classpath &apos;com.lingyi.hello:buildSrc:1.0-SNAPSHOT&apos; //在依赖的scrip
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
