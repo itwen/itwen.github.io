@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -22,6 +22,7 @@
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
+<link rel="Shortcut Icon" href="http://os8n9su9s.bkt.clouddn.com/FiS7ZUUdGl423yq0K2qvH48pf7B-"> 
 
 
 
@@ -97,12 +98,12 @@
    早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从view的工作原理看listview的巧妙设计(activity和window的创建过程)">
-<meta property="og:url" content="http://yoursite.com/2016/12/11/从view的工作原理看listview的巧妙设计-1/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/从view的工作原理看listview的巧妙设计-1/index.html">
 <meta property="og:site_name" content="Lingyi's  Blog">
 <meta property="og:description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
    早期Android的虚拟机是基于寄存器的Dalvik，它的最大堆大小一般是16M，有的机器为24M。我们平常看到的OutOfMemory的错">
 <meta property="og:image" content="http://my.csdn.net/uploads/201208/10/1344607996_5187.png">
-<meta property="og:updated_time" content="2017-07-31T09:38:54.000Z">
+<meta property="og:updated_time" content="2017-08-01T09:03:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从view的工作原理看listview的巧妙设计(activity和window的创建过程)">
 <meta name="twitter:description" content="activity和window的创建过程  在我们日常开发中用的最多用法最复杂的系统原生组件当属Listview了，在显示同类的数据或者规则化的数据的时候用listview能带来良好的体验，而对于数据很多的情况只要滑动就能把屏幕外的数据移入屏幕当中。
@@ -135,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/11/从view的工作原理看listview的巧妙设计-1/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/25/从view的工作原理看listview的巧妙设计-1/"/>
 
 
 
@@ -156,7 +157,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -176,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,7 +218,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页 /
+            首页
           </a>
         </li>
       
@@ -227,7 +228,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档 /archives
+            归档
           </a>
         </li>
       
@@ -237,7 +238,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            分类 /categories
+            分类
           </a>
         </li>
       
@@ -247,7 +248,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签 /tags
+            标签
           </a>
         </li>
       
@@ -257,7 +258,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            关于 /about
+            关于
           </a>
         </li>
       
@@ -324,7 +325,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/11/从view的工作原理看listview的巧妙设计-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/从view的工作原理看listview的巧妙设计-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="零一">
@@ -353,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-11T19:34:17+08:00">
-                2016-12-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T19:34:17+08:00">
+                2017-04-25
               </time>
             
 
@@ -393,7 +394,7 @@
 
           
           
-             <span id="/2016/12/11/从view的工作原理看listview的巧妙设计-1/" class="leancloud_visitors" data-flag-title="从view的工作原理看listview的巧妙设计(activity和window的创建过程)">
+             <span id="/2017/04/25/从view的工作原理看listview的巧妙设计-1/" class="leancloud_visitors" data-flag-title="从view的工作原理看listview的巧妙设计(activity和window的创建过程)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -576,7 +577,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/11/水波纹activity切换动画/" rel="next" title="水波纹activity切换动画">
+              <a href="/2017/02/10/水波纹activity切换动画/" rel="next" title="水波纹activity切换动画">
                 <i class="fa fa-chevron-left"></i> 水波纹activity切换动画
               </a>
             
@@ -714,6 +715,20 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.atling.cn" title="fileUpload" target="_blank">fileUpload</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -1348,7 +1363,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
@@ -1357,6 +1389,8 @@
   
 
   
+  
+
 
   
 
